@@ -37,4 +37,8 @@ class NatNetClient:
     def _callback(self, dataFrame):
         self.lastFrame = dataFrame
         if self.dataCallback:
-            self.dataCallback(dataFrame)
+            try:
+                self.dataCallback(dataFrame)
+            except Exception, e:
+                print "Exception in DataCallback:"
+                print e
